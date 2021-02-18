@@ -1,25 +1,27 @@
 package springConfTest;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 import java.io.*;
 
+@Component
 public class FileEventLogger implements EventLogger{
 
-    private final String filename;
+    @Value("${log}")
+    private String filename;
 
-    public FileEventLogger(String filename) {
-        this.filename = filename;
-    }
-
-    private boolean canWrite() {
-        return new File(filename).canWrite();
+    @PostConstruct
+    private void canWrite() throws FileNotFoundException {
+        if (!new File(filename).canWrite())
+            throw new FileNotFoundException("Unable to write into file " + filename);
     }
 
     @Override
     public void logEvent(Event event) {
         try (FileWriter pr = new FileWriter(filename, true)){
             pr.write(event.toString() + "\n");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

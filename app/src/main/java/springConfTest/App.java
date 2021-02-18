@@ -3,30 +3,34 @@
  */
 package springConfTest;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.stereotype.Component;
 import java.util.Map;
 
+@Component
 public class App {
 
     private final EventLogger defaultLogger;
     private final Client client;
-    private final Map<EventType, EventLogger> loggers;
+    private final Map<EventType, EventLogger> loggersMap;
 
-    public App(EventLogger defaultLogger, Client client, Map<EventType, EventLogger> loggers) {
+    @Autowired
+    public App(@Qualifier(value = "cacheFileEventLogger") EventLogger defaultLogger, Client client, Map<EventType, EventLogger> loggersMap) {
         this.defaultLogger = defaultLogger;
         this.client = client;
-        this.loggers = loggers;
+        this.loggersMap = loggersMap;
     }
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("hernya_kakayato_japan.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         App app = context.getBean("app", App.class);
 
         Event event = context.getBean("event", Event.class);
         event.setMsg("Hello dear mister 1");
-        app.eventLogger(EventType.INFO, event);
 
+        app.eventLogger(EventType.INFO, event);
         app.eventLogger(EventType.ERROR, event);
         app.eventLogger(null, event);
 
@@ -34,12 +38,13 @@ public class App {
     }
 
     private void eventLogger(EventType type, Event event){
-        EventLogger eventLogger = loggers.get(type);
+        EventLogger eventLogger = loggersMap.get(type);
         if (eventLogger == null)
             eventLogger = this.defaultLogger;
 
         String message = event.getMsg();
-        event.setMsg(message.replaceAll(String.valueOf(client.getId()), client.getName()));
+        event.setMsg(message.replaceAll(String.valueOf(client.getId()), client.getName() + ", " + client.getGreetimg()));
         eventLogger.logEvent(event);
     }
+
 }

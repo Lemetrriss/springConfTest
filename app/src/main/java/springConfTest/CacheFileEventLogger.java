@@ -1,17 +1,20 @@
 package springConfTest;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
+import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
+@Lazy
 public class CacheFileEventLogger extends FileEventLogger{
 
     private final List<Event> events = new ArrayList<>();
-    private final int size;
 
-    public CacheFileEventLogger(String filename, int size) {
-        super(filename);
-        this.size = size;
-    }
+    @Value("${size}")
+    private int size;
 
     @Override
     public void logEvent(Event event) {
@@ -21,6 +24,7 @@ public class CacheFileEventLogger extends FileEventLogger{
         }
     }
 
+    @PreDestroy
     private void destroy(){
         if (events.size() != 0){
             writeToFile();

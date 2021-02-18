@@ -13,6 +13,7 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
     implementation 'org.springframework:spring-context:5.2.12.RELEASE'
     implementation 'org.springframework:spring-context-support:5.2.12.RELEASE'
+    implementation 'javax.annotation:jsr250-api:1.0'
 
 }
 

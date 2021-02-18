@@ -1,7 +1,8 @@
 package springConfTest;
 
-import org.springframework.core.task.TaskDecorator;
+import org.springframework.stereotype.Component;
 
+@Component
 public class ConsoleEventLogger implements EventLogger{
     @Override
     public void logEvent(Event msg) {

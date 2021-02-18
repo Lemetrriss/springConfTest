@@ -1,11 +1,17 @@
 package springConfTest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 import java.util.List;
 
+@Component
 public class CombinedEventLogger implements EventLogger{
+
     List<EventLogger> logesrs;
 
-    public CombinedEventLogger(List<EventLogger> loggesrs) {
+    @Autowired
+    public CombinedEventLogger(@Qualifier("loggerList")List<EventLogger> loggesrs) {
         this.logesrs = loggesrs;
     }
 
