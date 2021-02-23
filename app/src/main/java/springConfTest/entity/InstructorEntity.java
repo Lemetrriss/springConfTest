@@ -9,7 +9,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = {"id", "courseEntity"})
+@ToString(exclude = {"id", "courseEntity", "instructorDetailId"})
 @Entity
 @Table(name = "instructor", schema = "public", catalog = "hb_student_tracker")
 public class InstructorEntity {

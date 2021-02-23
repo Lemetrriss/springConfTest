@@ -13,7 +13,7 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = "id")
+@ToString(exclude = {"id", "instructor", "students", "reviews"})
 @Entity
 @Table(name = "course", schema = "public", catalog = "hb_student_tracker")
 public class CourseEntity {
@@ -35,10 +35,25 @@ public class CourseEntity {
     @JoinColumn(name = "course_id")
     private List<ReviewEntity> reviews;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.DETACH,CascadeType.REFRESH,})
+    @JoinTable(
+            name = "course_student",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_id")
+            )
+    private List<StudentEntity> students;
+
     public void add(ReviewEntity review){
         if (reviews == null)
             reviews = new ArrayList<>();
         reviews.add(review);
+    }
+
+    public void add(StudentEntity student){
+        if (students == null)
+            students = new ArrayList<>();
+        students.add(student);
     }
 }
 
