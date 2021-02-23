@@ -7,6 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
+import springConfTest.enums.EventType;
+import springConfTest.loggers.EventLogger;
+import springConfTest.pojo.Client;
+import springConfTest.pojo.Event;
+import springConfTest.springConfigClass.AppConfig;
+
 import java.util.Map;
 
 @Component

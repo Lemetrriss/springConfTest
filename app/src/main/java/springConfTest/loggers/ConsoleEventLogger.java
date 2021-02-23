@@ -1,6 +1,7 @@
-package springConfTest;
+package springConfTest.loggers;
 
 import org.springframework.stereotype.Component;
+import springConfTest.pojo.Event;
 
 @Component
 public class ConsoleEventLogger implements EventLogger{

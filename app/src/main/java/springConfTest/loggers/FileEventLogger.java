@@ -1,7 +1,8 @@
-package springConfTest;
+package springConfTest.loggers;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import springConfTest.pojo.Event;
 
 import javax.annotation.PostConstruct;
 import java.io.*;

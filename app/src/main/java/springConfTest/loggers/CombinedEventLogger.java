@@ -1,8 +1,10 @@
-package springConfTest;
+package springConfTest.loggers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import springConfTest.pojo.Event;
+
 import java.util.List;
 
 @Component

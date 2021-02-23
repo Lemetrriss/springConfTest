@@ -12,16 +12,16 @@
 <!--    <context:annotation-config />-->
 <!--    <context:component-scan base-package="springConfTest" />-->
 
-<!--    <bean name="consoleLogger" class="springConfTest.ConsoleEventLogger"/>-->
+<!--    <bean name="consoleLogger" class="springConfTest.loggers.ConsoleEventLogger"/>-->
 
-<!--    <bean name="fileLogger" class="springConfTest.FileEventLogger" init-method="canWrite">-->
+<!--    <bean name="fileLogger" class="springConfTest.loggers.FileEventLogger" init-method="canWrite">-->
 <!--        <constructor-arg name="filename" value="app/src/main/java/springConfTest/log/file.log"/>-->
 <!--    </bean>-->
 
-<!--    <bean name="cacheFileLogger" class="springConfTest.CacheFileEventLogger" destroy-method="destroy"-->
+<!--    <bean name="cacheFileLogger" class="springConfTest.loggers.CacheFileEventLogger" destroy-method="destroy"-->
 <!--          parent="fileLogger" c:size="5"/>-->
 
-<!--    <bean name="combined" class="springConfTest.CombinedEventLogger" c:loggesrs-ref="loglist"/>-->
+<!--    <bean name="combined" class="springConfTest.loggers.CombinedEventLogger" c:loggesrs-ref="loglist"/>-->
 
 <!--    <util:list id="loglist">-->
 <!--        <ref bean="consoleLogger"/>-->

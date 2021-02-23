@@ -1,5 +1,7 @@
-package springConfTest;
+package springConfTest.pojo;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.text.DateFormat;
@@ -9,26 +11,15 @@ import java.util.Date;
 public class Event {
     private final int id = count++;
     private static int count = 0;
+    @Getter
+    @Setter
     private String msg;
+    @Getter
+    @Setter
+    @Autowired
     private Date date;
+    @Autowired
     private DateFormat dateFormat;
-
-    @Autowired
-    public void setDate(Date date) {
-        this.date = date;
-    }
-    @Autowired
-    public void setDateFormat(DateFormat dateFormat) {
-        this.dateFormat = dateFormat;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
 
     @Override
     public String toString() {

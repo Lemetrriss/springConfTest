@@ -1,8 +1,10 @@
-package springConfTest;
+package springConfTest.loggers;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
+import springConfTest.pojo.Event;
+
 import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;

@@ -1,6 +1,11 @@
-package springConfTest;
+package springConfTest.springConfigClass;
 
 import org.springframework.context.annotation.*;
+import springConfTest.enums.EventType;
+import springConfTest.loggers.CombinedEventLogger;
+import springConfTest.loggers.ConsoleEventLogger;
+import springConfTest.loggers.EventLogger;
+import springConfTest.loggers.FileEventLogger;
 
 import java.text.DateFormat;
 import java.util.*;

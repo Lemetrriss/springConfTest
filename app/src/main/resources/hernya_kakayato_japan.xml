@@ -30,9 +30,9 @@
 <!--        <entry key="ERROR" value-ref="combinedEventLogger"/>-->
 <!--    </util:map>-->
 
-<!--    <bean name="client" class="springConfTest.Client" c:id="${id}" c:name="${name}" p:greetimg="${greeting}"/>-->
+<!--    <bean name="client" class="springConfTest.pojo.Client" c:id="${id}" c:name="${name}" p:greetimg="${greeting}"/>-->
 
-<!--    <bean name="event" class="springConfTest.Event" scope="prototype">-->
+<!--    <bean name="event" class="springConfTest.pojo.Event" scope="prototype">-->
 <!--        <constructor-arg>-->
 <!--            <bean class="java.util.Date"/>-->
 <!--        </constructor-arg>-->

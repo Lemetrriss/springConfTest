@@ -1,4 +1,4 @@
-package springConfTest;
+package springConfTest.enums;
 
 public enum EventType {
     INFO, ERROR
